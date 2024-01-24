@@ -32,12 +32,24 @@
     </header>
     <div class="flex flex-col m-16" style="gap: 1rem">
       <kds-button
+        kind="prominent"
+        variant="fill"
         onclick="(e) => {
-          console.log(e.currentTarget)
-          e.currentTarget.setAttribute('palette', 'positive')
+          const host = e.currentTarget.parentNode.host
+          const getRandomPalette = () => {
+            const currentPalette = host.getAttribute('palette') || null
+            if (!currentPalette) {
+              host.setAttribute('palette', 'accent')
+            }
+            const palettes = ['positive', 'negative', 'neutral', 'callout', 'special', 'accent']
+            const newPalette = palettes[Math.floor(Math.random() * 5)]
+            return newPalette === currentPalette ? getRandomPalette() : newPalette
+          }
+          host.setAttribute('palette', getRandomPalette())
         }"
-        >Click Me!</kds-button
       >
+        Click Me!
+      </kds-button>
       <kds-button class="kds-Button--hasIconOnly">
         <svg
           class="kds-Icon kds-Icon--utilityMedium"
