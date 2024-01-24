@@ -1,0 +1,6 @@
+/.parcel-cache
+/dist
+/kds
+/node_modules
+kds-styles.css
+.DS_Store
