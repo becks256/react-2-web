@@ -9,10 +9,32 @@ sharedStyles.replaceSync(styles);
 
 export const reactToCustomEl = (ReactComponent) => {
   return class extends HTMLElement {
+    static get observedAttributes() {
+      return Object.keys(ReactComponent.propTypes || []);
+    }
+
+    constructor() {
+      super();
+      // Initialize the root instance variable
+      this.root = null;
+    }
+
     connectedCallback() {
+      // Render the component
+      this.mountReactComponent();
+    }
+
+    mountReactComponent() {
       const { hasChildren, ...props } = this.getProps();
-      const root = ReactDOM.createRoot(this.attachShadow({ mode: "open" }));
-      root.render(
+
+      // Only create the root if it doesn't already exist
+      if (!this.root) {
+        this.root = ReactDOM.createRoot(this.attachShadow({ mode: "open" }));
+        this.shadowRoot.adoptedStyleSheets = [sharedStyles];
+      }
+
+      // Render the React component
+      this.root.render(
         hasChildren ? (
           <ReactComponent {...props}>
             <slot />
@@ -21,7 +43,19 @@ export const reactToCustomEl = (ReactComponent) => {
           <ReactComponent {...props} />
         )
       );
-      this.shadowRoot.adoptedStyleSheets = [sharedStyles];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+      if (oldValue !== newValue) {
+        this.mountReactComponent();
+      }
+    }
+
+    disconnectedCallback() {
+      // Unmount the component if the root exists
+      if (this.root) {
+        this.root.unmount();
+      }
     }
 
     getProps() {
@@ -67,10 +101,6 @@ export const reactToCustomEl = (ReactComponent) => {
         this.childElementCount ||
         this.children.length;
       return props;
-    }
-
-    disconnectedCallback() {
-      ReactDOM.unmountComponentAtNode(this.shadowRoot);
     }
   };
 };
