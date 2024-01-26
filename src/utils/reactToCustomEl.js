@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import { kebabToCamelCase } from "./kebab2Camel";
 import { styles } from "../styles/kds.min.js";
 import { convertFunction } from "./convertFunction.js";
+import { convertStringHTMLToJSXForProp } from "./propMappingUtils/jsxMapping.js";
 
 let sharedStyles = new CSSStyleSheet();
 sharedStyles.replaceSync(styles);
 
-export const reactToCustomEl = (ReactComponent) => {
+export const reactToCustomEl = (ReactComponent, config) => {
   return class extends HTMLElement {
     static get observedAttributes() {
       return Object.keys(ReactComponent.propTypes || []);
@@ -66,6 +67,10 @@ export const reactToCustomEl = (ReactComponent) => {
 
         // Attempt to parse JSON attributes
         try {
+          if (config.parse && config.parse.includes(name)) {
+            props[name] = convertStringHTMLToJSXForProp(value);
+            continue;
+          }
           if (name === "class") {
             props["className"] = value;
             continue;
