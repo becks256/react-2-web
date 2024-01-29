@@ -1,5 +1,0 @@
-# Font Squirrel Font-face Generator Configuration File
-# Upload this file to the generator to recreate the settings
-# you used to create these fonts.
-
-{"mode":"expert","formats":["woff2"],"tt_instructor":"keep","fix_gasp":"xy","fix_vertical_metrics":"Y","metrics_ascent":"","metrics_descent":"","metrics_linegap":"","add_spaces":"Y","add_hyphens":"Y","fallback":"none","fallback_custom":"100","options_subset":"advanced","subset_range":["altpunctuation","accentedlower","accentedupper","diacriticals"],"subset_custom":"\u00bd\u2153\u2154\u00bc\u00be\u2155\u2156\u2157\u2158\u2159\u215a\u2150\u215b\u215c\u215d\u215e\u2044\u2715\u00d7\u00ba\u00b0\u02da\u02bc\u2032\u2033\u2039\u203a\u00ab\u00bb\u00a1\u00bf-\u2212\u00b1\u2022\u00b7\u2020\u2021\u00a9\u00ae\u2122\u0301 \u0300 \u0302 \u0303 \u0308 \u030a ","subset_custom_range":"","subset_ot_features_list":"","css_stylesheet":"extended.css","filename_suffix":"-extended","spacing_adjustment":"0","rememberme":"Y"}
