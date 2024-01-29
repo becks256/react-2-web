@@ -3,30 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "npm run clean && npx parcel index.html",
-    "build": "npm run clean && npx parcel build index.html && npm run copy:icons",
-    "serve": "npx http-server dist",
-    "clean": "rm -rf ./dist ./.parcel-cache"
-  },
   "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@kroger/cx-kds-react": "^1.11.1",
-    "@kroger/kds-web-blueprints": "^3.0.0-beta.9",
-    "@kroger/kds-web-core": "^2.0.0-beta.5",
-    "@kroger/kds-web-icon-component": "^0.0.1-beta.14",
-    "@kroger/kds-web-icons": "^2.0.0-beta.10",
     "html-react-parser": "^5.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "cssnano": "^6.0.3",
-    "parcel": "^2.11.0",
-    "postcss": "^8.4.33",
-    "process": "^0.11.10"
   }
 }
