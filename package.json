@@ -1,12 +1,12 @@
 {
-  "name": "react-2-web",
-  "version": "1.0.0",
+  "name": "@becks256/react-2-web",
+  "version": "0.0.1-beta",
   "description": "",
   "main": "index.js",
   "type": "module",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "html-react-parser": "^5.1.1",
     "react": "^18.2.0",
