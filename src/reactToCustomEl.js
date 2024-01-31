@@ -72,7 +72,7 @@ export const reactToCustomEl = (ReactComponent, config) => {
 
         // Attempt to parse JSON attributes
         try {
-          if (config.parse && config.parse.includes(name)) {
+          if (parse && parse.includes(name)) {
             props[name] = convertStringHTMLToJSXForProp(value)
             continue
           }
