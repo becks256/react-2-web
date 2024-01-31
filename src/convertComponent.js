@@ -3,8 +3,8 @@ import { reactToCustomEl } from "./reactToCustomEl";
 export const convertComponent = (
   componentName,
   ReactComponent,
-  { parse } = {}
+  { ...config }
 ) => {
-  const WebComponent = reactToCustomEl(ReactComponent, { parse });
+  const WebComponent = reactToCustomEl(ReactComponent, { ...config });
   customElements.define(componentName, WebComponent);
 };
