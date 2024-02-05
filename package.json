@@ -2,15 +2,21 @@
   "name": "react-2-web",
   "version": "1.0.0",
   "description": "",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "npm run clean && npx parcel index.html",
-    "build": "npm run clean && npx parcel build index.html && npm run copy:icons",
-    "serve": "npx http-server dist",
-    "copy:icons": "cp -R node_modules/@kroger/kds-web-icons ./dist",
-    "copy:styles": "cp -R node_modules/@kroger/cx-kds-react/kds-styles.css node_modules/@kroger/cx-kds-react/kds .",
-    "concat:css": "node ./src/utils/buildStyles.js",
-    "minify:css": "npx postcss ./src/styles/kds.css --use cssnano --output ./src/styles/kds.min.css",
-    "clean": "rm -rf ./dist ./.parcel-cache"
+    "build": "rollup -c",
+    "parcel:start": "npm run clean && npx parcel index.html",
+    "parcel:build": "npm run parcel:clean && npx parcel build index.html && npm run copy:icons",
+    "parcel:serve": "npx http-server dist",
+    "parcel:copy:icons": "cp -R node_modules/@kroger/kds-web-icons ./dist",
+    "parcel:copy:styles": "cp -R node_modules/@kroger/cx-kds-react/kds-styles.css node_modules/@kroger/cx-kds-react/kds .",
+    "parcel:concat:css": "node ./src/utils/buildStyles.js",
+    "parcel:minify:css": "npx postcss ./src/styles/kds.css --use cssnano --output ./src/styles/kds.min.css",
+    "parcel:clean": "rm -rf ./dist ./.parcel-cache"
   },
   "type": "module",
   "keywords": [],
@@ -27,9 +33,23 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "cssnano": "^6.0.3",
     "parcel": "^2.11.0",
     "postcss": "^8.4.33",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "rollup": "^2.60.0",
+    "rollup-plugin-css-only": "^4.5.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-svg": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.5.0"
   }
 }
